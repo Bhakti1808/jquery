@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+ 
+</head>
+<body>
+    <div class="main"> 
+
+        <style>
+            body{
+                background-color: beige;
+                border: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            div{
+                background-color: rgb(193, 231, 243);
+                width: 300px;
+                border: 15px ;
+                padding: 50px;
+                margin: 20px;
+                
+            }
+            #incCounter{
+                border-radius:10px ;
+                background-color: blanchedalmond;
+                font-size: larger;
+
+            }
+            #decCounter{
+                border-radius:10px ;
+                background-color: blanchedalmond;
+                font-size: larger;
+            }
+            #bind{
+                border-radius:10px ;
+                background-color: rgb(74, 143, 233);
+                font-size: larger;
+            }
+            #unbind{
+                border-radius:10px ;
+                background-color: rgb(74, 143, 233);
+                font-size: larger;
+            }
+
+        </style>
+    
+    <button  id="incCounter" >+</button>
+    <label id="input"></label>
+
+    <button id="decCounter" >-</button> <br>
+
+    <button id="bind" >Bind</button>
+    <button id="unbind" >Unbind</button>
+    </div>
+
+    <script>
+    
+   
+        $(document).ready(function(){
+            let i = 0;
+            $("#input").text(i);
+            
+            $("#incCounter").bind("click",function(){
+                $(this).trigger("increment");
+            });
+            $("#decCounter").bind("click",function(){
+                $(this).trigger("decrement");
+            });
+
+        
+            $("#unbind").click(function(){
+                 $("#decCounter").unbind("click");
+                 $("#incCounter").unbind("click");
+
+            })
+
+            $("#bind").click(function(){
+                $("#decCounter").bind("click");
+                $("#incCounter").bind("click");
+            })
+
+
+            $("#incCounter").bind("increment",function(){
+                i++;
+                $('#input').text(i); 
+            });
+            $("#decCounter").bind("decrement",function(){
+                i--;
+                $('#input').text(i); 
+            });
+        })
+
+
+     </script>
+</body>
+</html>
